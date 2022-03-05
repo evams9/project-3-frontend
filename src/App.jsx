@@ -7,6 +7,14 @@ import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import Protected from './pages/Protected';
 import SignupPage from './pages/SignupPage';
+import NewRecipe from './components/NewRecipe';
+import AllRecipes from './components/AllRecipes';
+import MyRecipes from './components/MyRecipes';
+import Detail from './components/Detail';
+import EditRecipe from './components/EditRecipe';
+
+
+
 
 function App() {
   return (
@@ -38,6 +46,16 @@ function App() {
             </IsAnon>
           }
         />
+        <Route path="/new" element={<NewRecipe />} />
+
+        <Route path="/all" element={<AllRecipes />} />
+
+        <Route path="/mine" element={<MyRecipes />} />
+
+        <Route path="/edit/:id" element={<EditRecipe />} />
+
+        <Route path="/recipes/:id" element={<Detail />} />
+
         <Route path="*" element={<div>404 Not Found</div>} />
       </Routes>
     </AuthProviderWrapper>
