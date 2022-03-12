@@ -13,7 +13,7 @@ useEffect(() => {
 
  return (
   <div>
-    <h1>All recipe</h1>
+    <h1>All recipes</h1>
     {recipes.map(element => <p key={element._id}>{element.name}</p>)}
 
   </div>

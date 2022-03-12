@@ -41,9 +41,24 @@ class ApiService {
     return this.api.get('/api/recipes/all');
     // same as
     // return axios.post("http://localhost:5005/auth/verify");
-  };
+    }
 
-}
+    getMyRecipes = () => {
+    return this.api.get('/api/recipes/mine');
+  }
+
+    createNewRecipe = (body) => {
+     return this.api.post('api/recipes/new', body);
+    }
+
+    getRecipeById = id => {
+      return this.api.get(`/api/recipes/${id}`);
+    }
+
+    editRecipe = (id, body) => {
+       return this.api.put(`/api/recipes/edit/${id}`, body);
+    }
+  }
 
 // Create one instance (object) of the service
 const apiService = new ApiService();
