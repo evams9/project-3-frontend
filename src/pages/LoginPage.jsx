@@ -1,7 +1,9 @@
 import { useState, useContext } from 'react';
-
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/auth.context';
+//import username from '../assets/img/username.png';
+import loginimg from '../assets/img/loginimg.png';
+import egg from '../assets/img/egg.png';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -30,22 +32,26 @@ function LoginPage() {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
+    <div className="formPage">
+      <img src={egg} alt="egg" id="egg"/>
+      <h1 id="app-name">Recipes Collector</h1>
+      <h1 id="form-title">Sign Up</h1>
 
-      <form onSubmit={handleLoginSubmit}>
+      <form onSubmit={handleLoginSubmit} id="form-input">
         <label>Email:</label>
         <input type="email" name="email" value={email} onChange={handleEmail} />
 
         <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword} />
+        <input type="password" name="password" value={password} onChange={handlePassword} /> 
 
-        <button type="submit">Login</button>
+        <button id="form-login" type="submit"><img src={loginimg} alt="login" id="loginimg"/></button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
+      <div id="dont">
       <p>Dont have an account yet?</p>
-      <Link to={'/signup'}> Sign Up</Link>
+      <Link  to={'/signup'}> Sign Up</Link>
+      </div>
     </div>
   );
 }

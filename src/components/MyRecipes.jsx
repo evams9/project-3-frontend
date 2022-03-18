@@ -20,7 +20,7 @@ useEffect(() => {
 
  return (
   <div>
-    <h1>My recipes</h1>
+    <h1 id="detail-title">My recipes</h1>
     {recipes.map(element => (
 
      <div key={element._id}>

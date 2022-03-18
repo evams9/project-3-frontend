@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from './../context/auth.context';
+import home from '../assets/img/home.png';
 
 function Navbar() {
   // Subscribe to the AuthContext to gain access to
@@ -8,19 +9,15 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
+    <nav className="navbar">
       <Link to="/">
-        <button>Navbar</button>
+        <button><img src={home} alt="home" id="homeimg" width="30px"/></button>
       </Link>
 
       {isLoggedIn && (
         <>
-          <Link to="/protected">
-            <button>Protected</button>
-          </Link>
-
+          <span id="navbar-position">Hey,{user && user.name}</span>
           <button onClick={logOutUser}>Logout</button>
-          <span>{user && user.name}</span>
         </>
       )}
 
@@ -28,11 +25,11 @@ function Navbar() {
         <>
           <Link to="/signup">
             {' '}
-            <button>Sign Up</button>{' '}
+            <button id="navbar-position">Sign Up</button>{' '}
           </Link>
           <Link to="/login">
             {' '}
-            <button>Login</button>{' '}
+            <button id="navbar-position">Login</button>{' '}
           </Link>
         </>
       )}

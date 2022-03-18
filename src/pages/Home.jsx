@@ -1,12 +1,22 @@
 import { Link } from 'react-router-dom';
 
+
+
+
+
 function Home() {
+{/*const { user } = useContext(AuthContext);*/}
+
   return (
+    
+    <div className="button-mine">
     <div>
-      <h1>Welcome to your profile {}</h1>
-        <Link to="/new">New recipes </Link>
-        <Link to="/mine">My recipes </Link>
-        <Link to="/all">All recipes </Link>
+       <ul> 
+        <Link to="/new"><button id="button-new">NEW RECIPE</button></Link>
+        <Link  to="/mine"><button id="button-mine">MY RECIPES </button></Link>
+        <Link  to="/all"><button id="button-all">ALL RECIPES </button></Link>
+       </ul>
+    </div>
     </div>
   );
 }

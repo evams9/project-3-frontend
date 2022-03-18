@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import apiService from "../services/api.service";
+import back from '../assets/img/back.png';
+import edit from '../assets/img/edit.png';
+import deleteimg from '../assets/img/deleteimg.png';
+
 
 function Detail() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState({});
+  const navigate = useNavigate();
   
   const getRecipe = async () => {
       try {
@@ -15,32 +20,45 @@ function Detail() {
   }
 };
 
+const handleDelete = async() => {
+        try {
+          await apiService.deleteRecipe(id);
+          navigate('/');
+      } catch(error){
+      console.log(error)
+  }
+}
+
+const handleBack = () => {
+  navigate(-1);
+}
+
   useEffect(() => {
     getRecipe();
   }, []);
 
  return (  
- <div className="recipeDetail">
- <h1>Detail</h1>
-
+   
+ <div className="detail">
+ <button onClick={handleBack}><img src={back} alt="back" id="back" width="30px"/></button> 
+  {/* <Link to={"/mine"}><img src={back} alt="back" id="back"/></Link>*/}
+ <h1 id="detail-title">Detail</h1>
+      <div className="detail-answer">
         <ul>
             <b>Recipe name:</b>
             <p>{recipe.name}</p>
 
             <b>Preparation time:</b>
-            <p>{recipe.prepTime}</p>
+            <p>{recipe.preparationTime}</p>
 
-            <b>Coocking time:</b>
-            <p>{recipe.coockingTime}</p>
+            <b>Diners:</b>
+            <p>{recipe.diners}</p>
 
-            <b>Total time:</b>
-            <p>{recipe.totalTime}</p>
+            <b>Level:</b>
+            <p>{recipe.level}</p>
 
-            <b>Difficulty:</b>
-            <p>{recipe.difficulty}</p>
-
-            <b>Type:</b>
-            <p> {recipe.type}</p>
+            <b>Category:</b>
+            <p> {recipe.category}</p>
 
             <b>Ingredients:</b>
             <p> {recipe.ingredients}</p>
@@ -48,9 +66,11 @@ function Detail() {
             <b>Description:</b>
             <p> {recipe.description}</p>
         </ul>
-
-    <Link to={`/edit/${recipe._id}`}>Edit</Link>
-
+      </div>
+    <div className="buttons-detail">
+      <Link to={`/edit/${recipe._id}`}><img src={edit} alt="edit" id="edit" width="40px"/></Link>
+      <button onClick={handleDelete}><img src={deleteimg} alt="delete" id="delete" width="35px"/></button>
+    </div>
  </div>
 
  )}

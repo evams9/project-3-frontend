@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  
+  /*.container {
+    /* border: 3px solid red; 
+    max-width: 90%;
+    margin: auto;
+    margin-top: 20px;
+
+  }*/
+  
+  
+  .formPage {
+
+    max-width: 400px;
+    padding: 30px 50px;
+    margin: auto;
+    margin-top: 10px;
+
+  }
+
+  
+  #app-name {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 35px;
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    color:whitesmoke
+  }
+
+  #form-title{
+    color:whitesmoke
+
+  }
+  
+  #form-input {
+    margin-bottom: 30px;
+    color: white;
+    font-family:monospace;
+    font-size: 20px;
+  }
+  
+  #form-input input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    border-bottom: 1px solid 
+  }
+  
+  #button-login{
+    margin-top: 15px;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:whitesmoke
+  }
+
+  #dont{
+  color:white;
+  font-size: 20px;
+  font-family: monospace;
+
+  }
+
+  #loginimg{
+    padding: 15px;
+  }
+
+  #egg{
+  margin:auto;
+
+  }

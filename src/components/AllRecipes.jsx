@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import apiService from "../services/api.service";
-
+import { Link } from 'react-router-dom';
 
 function AllRecipes() {
 const [recipes, setRecipes] = useState([])
@@ -13,8 +13,8 @@ useEffect(() => {
 
  return (
   <div>
-    <h1>All recipes</h1>
-    {recipes.map(element => <p key={element._id}>{element.name}</p>)}
+    <h1 id="detail-title">All recipes</h1>
+    {recipes.map(element => <Link key={element._id} to={`/recipes/${element._id}`}><p>{element.name}</p></Link>)}
 
   </div>
 

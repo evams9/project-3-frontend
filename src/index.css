@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.navbar{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color:white;
+  display: flex;
+  justify-content: space-around;
+  padding: 4px;
+  border-radius: 10px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+#navbar-position{
+margin-top: 6px;
+
+}
+
+#back{
+  margin-top: -40px;
+  margin-left: 10px;
+}
+
+#back-edit{
+  margin-top: -30px;
+  margin-left: 10px;
+  width: 10%;
+}

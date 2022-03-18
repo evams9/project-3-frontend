@@ -1,0 +1,71 @@
+h1 {
+  margin-top: auto;
+  padding: 0px;
+}
+
+
+
+#button-new {
+  background-image: url(./assets/img/croquetas.jpg); 
+  background-size: 100%;
+  padding:30px;
+  margin:30px;
+  margin-left: 40px;
+  text-align: center;
+  color:white;         
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  width: 310px;
+  height: 150px;
+  font-size: 30px;
+  font-family: monospace;
+  font-weight: bolder;
+  letter-spacing: 3px;
+
+}
+         
+#button-mine {
+  background-image: url(./assets/img/tortilla.jpg); 
+  background-size: 100%;
+  padding:30px;
+  margin:30px;
+  margin-left: 40px;
+  text-align: center;
+  color:white;       
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  width: 310px;
+  height: 150px;
+  font-size: 30px;
+  font-family: monospace;
+  font-weight: bolder;
+  letter-spacing: 3px;
+
+}
+
+
+
+#button-all {
+  background-image: url(./assets/img/postre.jpg); 
+  background-size: 100%;
+  padding:30px;
+  margin:30px;
+  margin-left: 40px;
+  text-align: center;
+  color:white;          
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  width: 310px;
+  height: 150px;
+  font-size: 30px;
+  font-family: monospace;
+  font-weight: bolder;
+  letter-spacing: 3px;
+
+}
+
+         
+         

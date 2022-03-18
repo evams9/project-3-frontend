@@ -58,6 +58,10 @@ class ApiService {
     editRecipe = (id, body) => {
        return this.api.put(`/api/recipes/edit/${id}`, body);
     }
+
+    deleteRecipe = (id) => {
+      return this.api.delete(`/api/recipes/delete/${id}`);
+    }
   }
 
 // Create one instance (object) of the service

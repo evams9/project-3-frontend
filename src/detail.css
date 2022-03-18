@@ -1,0 +1,22 @@
+#detail-title{
+  font-family: monospace;
+  font-size: 40px;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 3px;
+  color:white;
+}
+
+.detail-answer{
+
+  background-color: rgb(236, 230, 228);
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: monospace;
+  color: rgb(71, 71, 71);
+}
+
+.buttons-detail{
+  display: flex;
+  padding: 30px;
+}

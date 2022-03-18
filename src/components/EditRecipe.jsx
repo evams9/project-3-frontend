@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import apiService from "../services/api.service";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import back from '../assets/img/back.png';
+
 
 
 function EditRecipe() {
@@ -9,12 +11,12 @@ function EditRecipe() {
   // const [recipe,setRecipe] = useState({});
   const [Rname, setName] = useState("");
   const [prepTime, setPrepTime] = useState("");
-  const [cookingTime, setCookingTime] = useState("");
-  const [totalTime, setTotalTime] = useState("");
+  const [diners, setDiners] = useState("");
   const [level, setLevel] = useState("");
   const [category, setCategory] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
   const navigate = useNavigate();
 
   const handleReceipeName = (e) => {
@@ -27,14 +29,9 @@ function EditRecipe() {
     console.log(prepTime)
   }
 
-    const handleCoockingTime = (e) => {
-    setCookingTime(e.target.value);
-    console.log(cookingTime)
-  }
-
-    const handleTotalTime = (e) => {
-    setTotalTime(e.target.value);
-    console.log(totalTime)
+    const handleDiners = (e) => {
+    setDiners(e.target.value);
+    console.log(diners)
   }
 
     const handleLevel = (e) => {
@@ -57,9 +54,14 @@ function EditRecipe() {
     console.log(description)
   }
 
+    const handleImage = (e) => {
+    setImage(e.target.value);
+    console.log(image)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    apiService.editRecipe( id, { name: Rname, preparationTime: prepTime, cookingTime, totalTime, level, category, ingredients, description}).then((response) => {
+    apiService.editRecipe( id, { name: Rname, preparationTime: prepTime, diners, level, category, ingredients, description}).then((response) => {
       navigate(`/recipes/${response.data._id}`);
     }).catch(error => console.log(error))
   }
@@ -70,8 +72,7 @@ function EditRecipe() {
           console.log(response);
           setName(response.data.recipe.name);
           setPrepTime(response.data.recipe.preparationTime);
-          setCookingTime(response.data.recipe.cookingTime);
-          setTotalTime(response.data.recipe.totalTime);
+          setDiners(response.data.recipe.diners);
           setLevel(response.data.recipe.level);
           setCategory(response.data.recipe.category);
           setIngredients(response.data.recipe.ingredients);
@@ -86,9 +87,10 @@ function EditRecipe() {
   }, []);
 
   return (  
- <div className="newRecipe">
- <h1 id="form-title"> New recipe</h1>
- <form action="/api/new" method="POST" onSubmit={handleSubmit} id="form">
+ <div className="newRecipe">   
+ <Link to={"/mine"}><img src={back} alt="back" id="back-edit"/></Link>
+    <h1 id="form-title"> New recipe</h1>
+    <form action="/api/new" method="POST" onSubmit={handleSubmit} id="form">
 
 
         <div className="form-input">
@@ -97,23 +99,30 @@ function EditRecipe() {
         </div>
 
         <div className="form-input">
-          <label>Time preparation</label>
-          <input type="number" name="prepTime" placeholder="Time preparation" value={prepTime} onChange={handlePrepTime}/> 
+          <label>Ingredients</label>
+          <input type="ingredients" name="ingredients" placeholder="ingredients" value={ingredients} onChange={handleIngredients}/> 
         </div>
 
         <div className="form-input">
-          <label>Time cooking</label>
-          <input type="number" name="cookingTime" placeholder="Time cooking" value={cookingTime} onChange={handleCoockingTime}/> 
+          <label>Time preparation (min)</label>
+          <select  name="prepTime" placeholder="Time preparation" value={prepTime} onChange={handlePrepTime}> 
+            <option value="5-15 min">5-15 min</option>
+            <option value="20-30 min">20-30 min</option>
+            <option value="30-40 min">30-40 min</option>
+            <option value="50-60 min">50-60 min</option>
+            <option value="+ 60 min">+ 60 min</option>
+          </select>
+        </div>
+
+
+        <div className="form-input">
+          <label>Diners</label>
+          <input type="number" name="diners" placeholder="diners" value={diners} onChange={handleDiners}/> 
         </div>
 
         <div className="form-input">
-          <label>Total time</label>
-          <input type="number" name="totalTime" placeholder="Total time" value={totalTime} onChange={handleTotalTime}/> 
-        </div>
-
-        <div className="form-input">
-          <label>Difficulty</label>
-            <select id="difficulty" name="difficulty" value={level} onChange={handleLevel}>
+          <label>Level</label>
+            <select id="level" name="level" value={level} onChange={handleLevel}>
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
                 <option value="cheff">Cheff</option>
@@ -121,25 +130,33 @@ function EditRecipe() {
         </div>
 
         <div className="form-input">
-          <label>Type</label>
-            <select id="type" name="type"  value={category} onChange={handleCategory}>
-                <option value="breakfast">Breakfast</option>
-                <option value="lunch">Lunch</option>
-                <option value="snack">Snack</option>
-                <option value="dinner">Dinner</option>
-                <option value="dessert">Dessert</option>
-                <option value="other">Other</option>
+          <label>Category</label>
+            <select id="category" name="category"  value={category} onChange={handleCategory}>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Snack">Snack</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Rice">Rice</option>
+                <option value="Asias">Asian</option>
+                <option value="Meat">Meat</option>
+                <option value="Fish">Fish</option>
+                <option value="Cream/Soup">Cream/Soup</option>
+                <option value="Salad">Salad</option>
+                <option value="Pasta">Pasta</option>
+                <option value="Sauces">Sauces</option>
+                <option value="Vegetarian/Vegan">Vegetarian/Vegan</option>
+                <option value="Other">Other</option>
           </select>
         </div>
 
-        <div className="form-input">
-          <label>Ingredients</label>
-          <input type="ingredients" name="ingredients" placeholder="ingredients" value={ingredients} onChange={handleIngredients}/> 
-        </div>
 
         <div className="form-input">
           <label>Description</label>
           <input type="textarea" name="description" placeholder="description" value={description} onChange={handleDescription}/> 
+        </div>
+
+        <div className="form-input">
+          <label>Image</label>
+          <input type="text" name="image" placeholder="Add image" value={image} onChange={handleImage}/> 
         </div>
             
 
