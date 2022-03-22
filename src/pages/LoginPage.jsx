@@ -35,7 +35,7 @@ function LoginPage() {
     <div className="formPage">
       <img src={egg} alt="egg" id="egg"/>
       <h1 id="app-name">Recipes Collector</h1>
-      <h1 id="form-title">Sign Up</h1>
+      <h1 id="form-title">Log in</h1>
 
       <form onSubmit={handleLoginSubmit} id="form-input">
         <label>Email:</label>

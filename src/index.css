@@ -31,3 +31,15 @@ margin-top: 6px;
   margin-left: 10px;
   width: 10%;
 }
+
+#name-recipe{
+font-size: 25px;
+/*margin-left: 130px;*/
+padding: 20px;
+background-color: rgb(236, 230, 228);
+font-family: monospace;
+color: rgb(90, 89, 89);
+
+
+
+}

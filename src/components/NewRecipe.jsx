@@ -11,7 +11,7 @@ function NewRecipe() {
   const [category, setCategory] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState(undefined);
   const navigate = useNavigate();
 
   const handleReceipeName = (e) => {
@@ -50,13 +50,15 @@ function NewRecipe() {
   }
 
     const handleImage = (e) => {
-    setImage(e.target.value);
-    console.log(image)
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+    apiService.uploadImage(uploadData).then((response) => setImageUrl(response.data.fileUrl)).catch((error) => console.log(error));
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    apiService.createNewRecipe({ name: Rname, preparationTime: prepTime, diners, level, category, ingredients, description}).then((response) => {
+    console.log('On submit', imageUrl);
+    apiService.createNewRecipe({ name: Rname, preparationTime: prepTime, diners, level, category, ingredients, description, imageUrl}).then((response) => {
       navigate(`/recipes/${response.data.newRecipe._id}`);
     }).catch(error => console.log(error))
   }
@@ -99,9 +101,9 @@ function NewRecipe() {
         <div className="form-input">
           <label>Level</label>
             <select id="level" name="level" value={level} onChange={handleLevel}>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="chef">Chef</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Chef">Chef</option>
           </select>
         </div>
 
@@ -132,7 +134,7 @@ function NewRecipe() {
 
         <div className="form-input">
           <label>Image</label>
-          <input type="text" name="image" placeholder="Add image" value={image} onChange={handleImage}/> 
+          <input type="file" onChange={handleImage}/> 
         </div>
             
 

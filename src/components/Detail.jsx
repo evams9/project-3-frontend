@@ -45,6 +45,8 @@ const handleBack = () => {
  <h1 id="detail-title">Detail</h1>
       <div className="detail-answer">
         <ul>
+
+            <img src={recipe.imageUrl} alt="recipe image"/>
             <b>Recipe name:</b>
             <p>{recipe.name}</p>
 
@@ -69,6 +71,7 @@ const handleBack = () => {
       </div>
     <div className="buttons-detail">
       <Link to={`/edit/${recipe._id}`}><img src={edit} alt="edit" id="edit" width="40px"/></Link>
+      &nbsp;&nbsp;&nbsp;&nbsp;
       <button onClick={handleDelete}><img src={deleteimg} alt="delete" id="delete" width="35px"/></button>
     </div>
  </div>

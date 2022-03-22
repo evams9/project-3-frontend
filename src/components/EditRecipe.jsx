@@ -16,7 +16,7 @@ function EditRecipe() {
   const [category, setCategory] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState(undefined);
   const navigate = useNavigate();
 
   const handleReceipeName = (e) => {
@@ -55,13 +55,14 @@ function EditRecipe() {
   }
 
     const handleImage = (e) => {
-    setImage(e.target.value);
-    console.log(image)
+    const uploadData = new FormData();
+    uploadData.append("imageUrl", e.target.files[0]);
+    apiService.uploadImage(uploadData).then((response) => setImageUrl(response.data.fileUrl)).catch((error) => console.log(error));
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    apiService.editRecipe( id, { name: Rname, preparationTime: prepTime, diners, level, category, ingredients, description}).then((response) => {
+    apiService.editRecipe( id, { name: Rname, preparationTime: prepTime, diners, level, category, ingredients, description, imageUrl}).then((response) => {
       navigate(`/recipes/${response.data._id}`);
     }).catch(error => console.log(error))
   }
@@ -77,6 +78,7 @@ function EditRecipe() {
           setCategory(response.data.recipe.category);
           setIngredients(response.data.recipe.ingredients);
           setDescription(response.data.recipe.description);
+          setImageUrl(response.data.recipe.imageUrl);
       } catch(error){
       console.log(error)
   }
@@ -123,9 +125,9 @@ function EditRecipe() {
         <div className="form-input">
           <label>Level</label>
             <select id="level" name="level" value={level} onChange={handleLevel}>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="cheff">Cheff</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Chef">Chef</option>
           </select>
         </div>
 
@@ -156,7 +158,7 @@ function EditRecipe() {
 
         <div className="form-input">
           <label>Image</label>
-          <input type="text" name="image" placeholder="Add image" value={image} onChange={handleImage}/> 
+          <input type="file" onChange={handleImage}/> 
         </div>
             
 

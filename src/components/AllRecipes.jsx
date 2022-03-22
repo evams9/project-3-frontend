@@ -14,7 +14,7 @@ useEffect(() => {
  return (
   <div>
     <h1 id="detail-title">All recipes</h1>
-    {recipes.map(element => <Link key={element._id} to={`/recipes/${element._id}`}><p>{element.name}</p></Link>)}
+    {recipes.map(element => <Link key={element._id} to={`/recipes/${element._id}`}><img src={element.imageUrl}/><p id="name-recipe">{element.name}</p></Link>)}
 
   </div>
 

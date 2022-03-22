@@ -62,9 +62,20 @@ class ApiService {
     deleteRecipe = (id) => {
       return this.api.delete(`/api/recipes/delete/${id}`);
     }
+
+    uploadImage = (file) => {
+    return this.api.post("/api/upload", file)
+    }
   }
 
 // Create one instance (object) of the service
 const apiService = new ApiService();
 
-export default apiService;
+/*const uploadImage = (file) => {
+  return api.post("/upload", file)
+    .then(res => res.data)
+    .catch(errorHandler);
+};*/
+
+
+export default apiService //uploadImage}//
